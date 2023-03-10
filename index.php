@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp</title>
+    <title>Instagram - Home</title>
     <?php require_once 'head.php'; ?>
 </head>
 
