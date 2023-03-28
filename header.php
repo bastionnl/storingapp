@@ -5,7 +5,7 @@
         <nav>
             <img src="<?php echo $base_url; ?>/img/logo-big-v4.png" alt="logo" class="logo">
             <a href="<?php echo $base_url; ?>/index.php">Home</a> |
-            <a href="<?php echo $base_url; ?>/meldingen/index.php">Meldingen</a>
+            <a href="<?php echo $base_url; ?>/meldingen/index.php">Meldingen 冰淇淋</a>
         </nav>
         <div>
             <a href="#" style="color: lightgrey;">Inloggen</a>

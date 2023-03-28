@@ -138,10 +138,24 @@ h1+a{
 table{
     width: 100%;
 }
-
+tr:nth-child(odd){
+    background-color: #ebebeb;
+}
+tr:first-child{
+    background-color: #d3d3d3;
+}
+tr:hover{
+    background-color: #d3d3d3;
+}
 th{
     text-align: left;
+
 }
+
+a{
+  text-decoration: none;
+}
+
 
 /* HOME */
 
@@ -169,7 +183,10 @@ label{
 .form-input{
     width: 600px;
 }
-
+.form-group{
+  justify-content: space-between;
+  align-items: center;
+}
 
 
 
