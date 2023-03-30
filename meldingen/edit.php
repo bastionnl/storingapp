@@ -12,7 +12,6 @@
     if(!isset($_GET['id'])){
         echo "Geef in je aanpaslink op de index.php het id van betreffende item mee achter de URL in je a-element om deze pagina werkend te krijgen na invoer van je vijfstappenplan";
         exit;
-
     }
     ?>
     <?php
@@ -46,7 +45,7 @@
 
         <form action="../backend/meldingenController.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $melding['id']; ?>"> 
-            <input type="hidden" name="actie" value="update">
+            <input type="hidden" name="action" value="update">
             <!-- (voeg hier opdracht 7 toe) -->
 
             <div class="form-group">
@@ -78,7 +77,7 @@
             </div>
             <div class="form-group">
                 <label for="overig">Overige info:</label>
-                <textarea name="overig" id="overig" class="form-input" rows="4"><?= $melding['overige_info'];?></textarea>
+                <textarea name="overig_info" id="overig" class="form-input" rows="4"><?= $melding['overige_info'];?></textarea>
             </div>
             
             <input type="submit" value="Melding opslaan">
