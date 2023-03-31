@@ -40,6 +40,7 @@
 
         //5. Ophalen gegevens, tip: gebruik hier fetch().
         $melding = $statement-> fetch(PDO::FETCH_ASSOC);
+        var_dump($melding); 
         ##die;
         ?>
 
@@ -50,7 +51,7 @@
 
             <div class="form-group">
                 <label>Naam attractie:</label>
-                <h2><?php echo $melding['attractie']; ?>. </h2>
+                <?php echo $melding['attractie']; ?>
             </div>
             <!-- Zorg dat het type wordt getoond, net als de naam hierboven -->
             <div class="form-group">
@@ -82,6 +83,11 @@
             
             <input type="submit" value="Melding opslaan">
 
+        </form>
+        <form action="../backend/meldingenController.php" method="POST">
+            <input type="hidden" name="id" value="<?= $melding['id'];?>">
+            <input type="hidden" name="action" value="delete">
+            <input type="submit" value="ghost activetie 10">
         </form>
     </div>  
 

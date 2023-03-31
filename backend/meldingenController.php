@@ -54,39 +54,43 @@ if($_POST['action']== 'create' ){
     header("Location: ../meldingen/index.php?msg=$msg");
 }
 
-    if($_POST['action']== 'update'){
-    $id = $_POST['id'];
-    $capaciteit = $_POST['capaciteit']; 
-    if(is_numeric($capaciteit)){
-        $errors[] = "capaciteit is verplicht";
-    }
-    if(isset($_POST['prioriteit'])){
-        $prioriteit = 1;
-    } 
-    else {
-        $prioriteit = 0;
-    }
-    $melder = $_POST['melder'];
-    if(empty($melder)){
-        $errors[] = "melder is verplicht";
-    }
-    $overige_info = $_POST['overige_info'];
-    $id = $_POST['id'];
-    
-        require_once 'conn.php';
-            $query = "UPDATE meldingen
-            SET capaciteit = :capaciteit, prioriteit = :prioriteit, melder = :melder, overige_info = :overige_info
-            WHERE id = :id";
-        $statement = $conn->prepare($query);
-        $statement -> Execute([
-            ":capaciteit" => $capaciteit,
-            ":prioriteit" => $prioriteit,
-            ":melder" => $melder,
-            ":overige_info" => $overige_info,
-            ":id" => $id
-        ]);
+if($_POST['action']== 'update'){
+        $id = $_POST['id'];
+        $capaciteit = $_POST['capaciteit']; 
+        if(is_numeric($capaciteit)){
+            $errors[] = "capaciteit is verplicht";
+        }
+        if(isset($_POST['prioriteit'])){
+            $prioriteit = 1;
+        } 
+        else {
+            $prioriteit = 0;
+        }
+        $melder = $_POST['melder'];
+        if(empty($melder)){
+            $errors[] = "melder is verplicht";
+        }
+        $overige_info = isset($_POST['overige_info']) ? $_POST['overige_info'] : null;
+        
+        if(isset($errors)){
+            var_dump($errors);
+            die();
+        }
+        
+            require_once 'conn.php';
+                $query = "UPDATE meldingen
+                SET capaciteit = :capaciteit, prioriteit = :prioriteit, melder = :melder, overige_info = :overige_info
+                WHERE id = :id";
+            $statement = $conn->prepare($query);
+            $statement -> Execute([
+                ":capaciteit" => $capaciteit,
+                ":prioriteit" => $prioriteit,
+                ":melder" => $melder,
+                ":overige_info" => $overige_info,
+                ":id" => $id
+            ]);
 }
-    if($_POST['action']== 'delete'	 ){
+if($_POST['action']== 'delete'	 ){
 
     }
 ?>
