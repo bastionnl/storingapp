@@ -73,8 +73,7 @@ if($_POST['action']== 'update'){
         $overige_info = isset($_POST['overige_info']) ? $_POST['overige_info'] : null;
         
         if(isset($errors)){
-            var_dump($errors);
-            die();
+            
         }
         
             require_once 'conn.php';
@@ -89,8 +88,19 @@ if($_POST['action']== 'update'){
                 ":overige_info" => $overige_info,
                 ":id" => $id
             ]);
+            $msg = "Melding gewijzigd";
+            header("Location: ../meldingen/index.php?msg=$msg");    
 }
-if($_POST['action']== 'delete'	 ){
+if($_POST['action']== 'delete'){
+    $id = $_POST['id'];
+    require_once 'conn.php';
+    $query = "DELETE FROM meldingen WHERE id = :id";
+    $statement = $conn->prepare($query);
+    $statement -> Execute([
+        ":id" => $id
+    ]);
+    $msg = "Melding verwijderd";
+    header("Location: ../meldingen/index.php?msg=$msg");
 
     }
 ?>

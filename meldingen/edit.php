@@ -40,7 +40,7 @@
 
         //5. Ophalen gegevens, tip: gebruik hier fetch().
         $melding = $statement-> fetch(PDO::FETCH_ASSOC);
-        var_dump($melding); 
+        
         ##die;
         ?>
 
