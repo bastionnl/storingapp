@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    $msg = "u moet eerst inloggen";
+    header("location: index.php?msg=$msg");
+    exit;
+
+}
+?>
 <!doctype html>
 <html lang="nl">
 
@@ -20,10 +29,21 @@
         } ?>
 
     <?php
+    
         require_once '../backend/conn.php';
-        $query = "SELECT * FROM meldingen";
-        $statement = $conn->prepare($query);
-        $statement->execute();
+        if(empty($_GET['type'])){
+            $query = "SELECT * FROM meldingen";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            } 
+            else{
+                $query = "SELECT * FROM meldingen WHERE type = :type";
+                $statement = $conn->prepare($query);
+                $statement->execute([
+                    ":type" => $_GET['type']
+                ]);     
+            }
+
         $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
         ?>
         <pre>
@@ -31,6 +51,26 @@
         #print_r($meldingen);
         
     ?> </pre>
+    
+    
+    <div class="filter">
+        <P> aantal meldingen: </P>
+        <form action="" method="GET">
+            <select name="type" id="type">
+                <option value="">- kies een filter -</option>
+                <option value="achtbaan">achtbaan</option>
+                <option value="draaiend">draaiend</option>
+                <option value="water">wateratractie</option>
+                <option value="kinder">kinderactractie</option>
+                <option value="horeca">horeca</option>
+                <option value="show">show</option>
+                <option value="overig">overig</option>
+                
+            </select>
+            <input type="submit" value="filter">    
+        </form>
+    </div>
+    
     
     <table>
         <tr>

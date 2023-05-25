@@ -8,7 +8,12 @@
             <a href="<?php echo $base_url; ?>/meldingen/index.php">Meldingen 冰淇淋</a>
         </nav>
         <div>
-            <a href="#" style="color: lightgrey;">Inloggen</a>
+            <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="<?php echo $base_url; ?>/logout.php">uitloggen</a>
+            <?php else: ?>
+            <a href="<?php echo $base_url; ?>/login.php">Inloggen</a> 
+            <?php endif; ?>
+            | <a href="<?php echo $base_url; ?>/register.php">Registreren</a>
         </div>
     </div>
 </header>

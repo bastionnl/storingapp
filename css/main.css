@@ -188,6 +188,12 @@ label{
   align-items: center;
 }
 
+.filter{
+    margin-bottom: 1rem;
+    
+    text-align: right;
+}
+
 
 
 
